@@ -1,0 +1,11 @@
+# 用户个人数据
+config.yaml
+archive/
+reading_log.md
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc

@@ -1,0 +1,54 @@
+# 用户配置
+# 复制此文件为 config.yaml 并根据个人需求修改
+
+# 研究兴趣（用于自动标签和关联分析）
+research_interests:
+  - "数字经济"
+  - "区域不平等"
+  - "劳动经济学"
+  - "产业组织"
+
+# 标签分类体系
+tag_categories:
+  宏观经济: ["#产业政策", "#区域发展", "#国际贸易", "#经济增长"]
+  数字经济: ["#数字基础设施", "#平台经济", "#数据要素", "#AI"]
+  劳动经济: ["#技能溢价", "#外包", "#就业", "#工资不平等"]
+  实证方法: ["#因果推断", "#DID", "#IV", "#RDD", "#面板数据"]
+  科技前沿: ["#大模型", "#算力", "#芯片", "#量子计算"]
+
+# 输出语言
+language: "zh-CN"  # "zh-CN" | "en" | "bilingual"
+
+# 笔记详细程度
+note_detail: "rich"  # "minimal" | "standard" | "rich"
+
+# 是否生成AI关联分析
+ai_relevance: true
+
+# 文章抓取策略（按优先级排列）
+fetch_strategies:
+  - "curl"          # 直接HTTP请求
+  - "playwright"    # 无头浏览器（需安装）
+  - "web_search"    # 搜索引擎缓存
+
+# 支持的文章来源
+supported_sources:
+  - domain: "mp.weixin.qq.com"
+    name: "微信公众号"
+    strategy: "curl_with_js_extract"
+  - domain: "arxiv.org"
+    name: "arXiv"
+    strategy: "direct_fetch"
+  - domain: "nber.org"
+    name: "NBER"
+    strategy: "direct_fetch"
+  - domain: "ssrn.com"
+    name: "SSRN"
+    strategy: "direct_fetch"
+
+# 文件路径
+paths:
+  inbox: "inbox.md"
+  reading_log: "reading_log.md"
+  archive: "archive/"
+  templates: "templates/"
