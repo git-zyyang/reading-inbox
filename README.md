@@ -56,10 +56,22 @@ python scripts/capture.py  # 监听剪贴板，自动追加微信链接
 
 > 处理阅读收件箱
 
-#### 方式B：命令行
+#### 方式B：三步命令行
 
 ```bash
-python scripts/fetch.py  # 批量抓取并生成笔记卡片
+# Step 1: 批量抓取文章内容（输出 JSON 到 /tmp/inbox_fetched.json）
+python scripts/process_inbox.py fetch
+
+# Step 2: Claude 根据抓取结果生成笔记卡片（在 Claude Code 中执行）
+
+# Step 3: 更新日志 + 清空收件箱
+python scripts/process_inbox.py finalize
+```
+
+#### 方式C：旧版命令行
+
+```bash
+python scripts/fetch.py  # 批量抓取并生成笔记卡片（v2.0 兼容）
 ```
 
 ## 项目结构
@@ -75,8 +87,9 @@ reading-inbox/
 ├── skill/
 │   └── SKILL-reading-inbox.md   # Claude Code Skill
 ├── scripts/
+│   ├── process_inbox.py         # 统一处理管线（v3.0）
 │   ├── capture.py               # 剪贴板快捷捕获
-│   └── fetch.py                 # 多策略文章抓取
+│   └── fetch.py                 # 多策略文章抓取（v2.0 兼容）
 ├── templates/
 │   ├── note_card.md             # 笔记卡片模板
 │   └── weekly_digest.md         # 周报模板
